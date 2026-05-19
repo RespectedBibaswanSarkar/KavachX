@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package kavachx;
+
+service RiskHook {
+  rpc AssessRisk(RiskRequest) returns (RiskResponse);
+}
+
+message RiskRequest {
+  string transactionToken = 1;
+  string userId = 2;
+  string sessionId = 3;
+  string source = 4;
+  string createdAt = 5;
+  string body = 6;
+  string telemetry = 7;
+}
+
+message RiskResponse {
+  string transactionToken = 1;
+  double riskScore = 2;
+  string verdict = 3;
+}
